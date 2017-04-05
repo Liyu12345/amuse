@@ -1,0 +1,363 @@
+		*{
+			margin: 0;
+			padding:0;
+		}
+		.bar a{
+			color:red;
+		}
+		.bar-footer{
+			position: absolute;
+		}
+		.menu{
+			top:38px;
+		}
+		.music_image{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			position: absolute;
+			left: 5px;
+			top:-20px;
+			background: blue;
+			background: white;
+		}
+		.music_image img{
+			width: 100%;
+			height: 100%;
+		}
+
+			/*左侧栏*/
+		.user{
+			width: 100%;
+			background: rgba(0,0,0,0.1);
+			height: 35%;
+			background: url(../img/bg.jpg);
+			background-size:100% 100%; 
+			position: relative;
+		}
+		.user:after{
+			content: "";
+			display: block;
+			width: 80px;
+			height: 80px;
+			border-radius:50%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			background: url(../img/icon.jpg);
+			background-size: 100% 100%; 
+			transform:translate(-50%,-50%);
+		}
+		.heihei{
+			width: 70px;
+			height: 70px;
+			position: absolute;
+			right: 0;
+			bottom: 126;
+			z-index: 10;
+			background:url(../img/heihei.gif);
+			background-position:0px -32px;
+		}
+		.menu-left{
+			background: #f1f1f1;
+		}
+
+		.pane, .view{
+			top:40px;
+		}
+		/*.allslide{
+			position:relative;
+			transition: transform 0.3s;
+			transition-timing-function:ease-out;
+		}*/
+		.baseSide{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background: #f1f1f1;
+		}
+		/*列表*/
+		#musicDiv .item{
+			width: 100%;
+			min-height: 40px;
+			padding-top: 5px;
+		}
+		#musicDiv  .item img{
+			top:5px;
+		}
+		#musicDiv  a.active{
+			background: aqua;
+		}
+		.bar-assertive .item{
+			width: 80%;
+			float: right;
+			height: 15px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			border: none;
+			background: #ccc;
+		}
+		.item h2{
+			font-size: 13px;
+		}
+		.item p{
+			line-height: 30px;
+			font-size: 12px;
+		}
+		.has-header{
+			top:77px;
+		}
+		.bar-subheader{
+			height: 35px;
+		}
+		.bar .button-bar .button.active{
+			background-color:purple; 
+			color:blue;
+		}
+		/*滑动列表*/
+		.slider-pager{
+			display: none;
+		}
+		.bar .button-bar>.button, .bar .buttons>.button{
+			background: #387EF5;
+			font-size: 14px;
+			color:white;
+			font-weight: bold;
+		}
+
+/*段子*/
+.card, .list-inset{
+	margin: 6px 10px;
+}
+.card i{
+	font-size: 20px;
+}
+.card i:nth-child(2){
+	float: right;
+	font-size: 20px;
+}
+
+/*图片*/
+#img_ i{
+	font-size: 10px;
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	color:purple;
+}
+#img_ i.ion-heart{
+	font-size: 10px;
+	position: absolute;
+	right: 50px;
+	bottom: 15px;
+	color:red;
+}
+/*audio*/
+#verdio{
+	width: 100%;
+}
+#verdio .verdio_box{
+	width: 48%;
+	height: 200px;
+	border: 1px solid #ccc;
+	font-size: 10px;
+	line-height: 15px;
+	float: left;
+	padding: 3px;
+	margin: 1%;
+	position: relative;
+}
+#verdio .verdio_box img{
+	width: 100%;
+	height: 120px;
+}
+#verdio .verdio_box p{
+	  word-break:break-all;
+	  display:-webkit-box;
+	  -webkit-line-clamp:2;
+	  -webkit-box-orient:vertical;
+	  overflow:hidden;
+}
+#verdio .verdio_box i{
+	font-size: 10px;
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	color:purple;
+}
+#verdio .verdio_box i.ion-heart{
+	font-size: 10px;
+	position: absolute;
+	right: 50px;
+	bottom: 5px;
+	color:red;
+}
+
+
+/*fooster*/
+.bar.bar-assertive{
+	background-color: #387EF5;
+	padding: 0;
+	
+}
+.bar.bar-assertive.bar-footer{
+	background-image:linear-gradient(180deg,green,blue 50%,transparent 50%); 
+	box-shadow: 1px 1px 1px;
+}
+#broadcast{
+		width: 100%;
+		height: 50px;
+		background: rgba(0,0,0,0.3);
+		position: relative;
+		bottom: 0;
+	}
+	#broadcast #banner{
+		width: 50px;
+		height: 50px;
+		margin:-10px 0 3px 3px;
+		float: left;
+		background: none;
+		border-radius: 50%;
+	}
+	#broadcast #banner img{
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
+	#operation{
+		margin-left: 50%;
+		margin-top: 5%;
+		width: 40%;
+	}
+	/*#progress{
+		width: 74%;
+		height: 5px;
+		float: right;
+		margin-right: 5%;
+		margin-top: 3%;
+		background: black;
+		opacity: 0.5;
+	}
+	#progress .pro_ing{
+		width:0;
+		height: 5px;
+		background: white;
+		float: left;
+	}
+	#progress .pro_bar{
+		width: 5px;
+		height: 12px;
+		background: #999;
+		float: left;
+		margin-top: -3px;
+	}*//*进度*/
+	#operation div{
+		width: 25%;
+		height: 30px;
+		float: left;
+		text-align: center;
+		font-size: 30px;
+	}
+	#operation div:active{
+		color:purple;
+	}
+	#song_name{
+		display: block;
+		float: left;
+		width: 30%;
+		height: 30px;
+		line-height: 30px;
+		font-size: 10px;
+		margin-left: 2%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow:ellipsis;
+		text-align: center;
+	}
+	.this_song{
+		background: blueviolet;
+	}
+	#volumn{
+		width: 40px;
+		position: absolute;
+		right: 0;
+		top: 35%;
+		font-size: 24px;	
+	}
+	/*进度条*/
+	#progress{
+		width: 75%;
+		height: 10px;
+		z-index: 10;
+		float: right;
+		margin-top: 5px;
+		margin-right: 10px;
+	}
+	#progress input[type=range] {
+	    -webkit-appearance: none;
+	    width: 95%;
+	    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+	}
+	#progress input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	}
+	#progress input[type=range]::-webkit-slider-runnable-track {
+	    height: 5px;
+	    border-radius: 10px; /*将轨道设为圆角的*/
+	    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+	}    
+	#progress input[type=range]:focus {
+	    outline: none;
+	}
+	#progress input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    height: 10px;
+	    width: 5px;
+	    background: #ffffff; 
+	    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+	    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+	}
+
+	#volumn input[type=range] {
+		position: absolute;
+	    -webkit-appearance: none;
+	    -webkit-transform:rotate(-90deg);
+	    -mo-transform:rotate(-90deg);
+	    -mz-transform:rotate(-90deg);
+	    width: 100px;
+	    right: -18px;
+	    bottom: 70px;
+	    display: none;
+	    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+	}
+	#volumn input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	}
+	#volumn input[type=range]::-webkit-slider-runnable-track {
+	    height: 5px;
+	    border-radius: 10px; /*将轨道设为圆角的*/
+	    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+	}    
+	#volumn input[type=range]:focus {
+	    outline: none;
+	}
+	#volumn input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    height: 5px;
+	    width: 5px;
+	    border-radius:50%; 
+	    background: #ffffff; 
+	    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+	    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+	}
+
+	/*搜索*/
+	.search{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 10;
+		background: white;
+	}

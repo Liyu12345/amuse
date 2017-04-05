@@ -1,0 +1,271 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+</head>
+	<link rel="stylesheet" type="text/css" href="plugin/ionic/css/ionic.min.css">
+	<link rel="stylesheet" type="text/css" href="src/css/comment.css">
+	<link rel="stylesheet" type="text/css" href="src/css/index.css">
+	<style type="text/css">
+
+		/*滑动*/
+		#sideBox{
+			width: 100%;
+			height :100%;
+			position:relative; 
+			transition: transform 0.3s;
+			transition-timing-function:ease-out;
+		}
+		.oneSide{
+			position:absolute;
+			top:0;
+			bottom:0;
+			width: 100%;
+		}
+
+
+	</style>
+	<script type="text/javascript" src="plugin/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="plugin/ionic/js/ionic.bundle.min.js"></script>
+	<script type="text/javascript" src="src/js/comment.js"></script>
+	<script type="text/javascript" src="src/js/index.js"></script>
+
+<body ng-app="music" ng-controller="music_con">
+
+	<!-- head -->
+	<ion-header-bar align-title="center" class="bar-positive">
+	  <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
+	  <div class="h1 title" >小翡音乐</div>
+	  <button class="button button-icon ion-android-search" ng-click='mysearch()' style="float: right"></button>
+	</ion-header-bar>
+	<div class="bar bar-subheader" style="margin:0;padding: 0">
+	  	<div class="button-bar">
+		  <a class="button active" ng-click='changeCurChannel($event)'>音乐</a>
+		  <a class="button" ng-click='changeCurChannel($event)'>段子</a>
+		  <a class="button" ng-click='changeCurChannel($event)'>图片</a>
+		  <a class="button" ng-click='changeCurChannel($event)'>视频</a>
+		</div>
+	 </div>
+
+  
+	<!-- content -->
+	<ion-side-menus><!-- 左侧栏 -->
+		<!-- 左侧栏 -->
+		<ion-side-menu side="left">
+			<div class="user"></div>
+			<div class="list" >
+			  <a class="item item-icon-left" href="#">
+			    <i class="icon ion-email"></i>
+			    Check mail
+			  </a>
+
+			  <a class="item item-icon-left item-icon-right" href="#">
+			    <i class="icon ion-chatbubble-working"></i>
+			    Call Ma
+			    <i class="icon ion-ios-telephone-outline"></i>
+			  </a>
+
+			  <a class="item item-icon-left" href="#">
+			    <i class="icon ion-mic-a"></i>
+			    Record album
+			    <span class="item-note">
+			      Grammy
+			    </span>
+			  </a>
+
+			  <a class="item item-icon-left" href="#">
+			    <i class="icon ion-person-stalker"></i>
+			    Friends
+			    <span class="badge badge-assertive">0</span>
+			  </a>
+			</div>
+			<div class="heihei"></div>
+  		</ion-side-menu>
+  		<!-- 内容栏 -->
+		<ion-side-menu-content>
+			<ion-content>
+				<!-- 滑动栏，内容里嵌套滑动栏 -->
+				<div id='sideBox'>
+					<!-- 音乐列表 -->
+				  <div class="oneSide">
+					<div id="musicDiv" class="list">
+					    <a href="#" ng-repeat="x in data" init="x.play=false" class="item item-avatar {{x.play?'active':''}}" ng-click="playCur($index,x)">
+					      <img src={{x.image3?x.image3:x.image0}}>
+					      <h2>{{x.name}}</h2>
+					      <p>{{x.text}}</p>
+					    </a>
+			      	</div>  
+				  </div>
+
+				  <!-- 段子 -->
+				  <div class="oneSide"> 
+				    <div id="programmeDiv" class="list" ng-controller="programme">
+					    <a class="item item-thumbnail-left" href="#" ng-repeat="x in data" ng-click="showProgramDetail(x)">
+					      <img src='{{x.profile_image}}'>
+					      <h2>{{x.name}}</h2>
+					      <p>{{x.text}}</p>
+					      <i class='icon ion-heart'>{{x.love}}</i>
+					      <i class='icon ion-heart-broken'>{{x.hate}}</i>
+					    </a>
+					</div>
+				  </div>
+
+				  <!-- 图片 -->
+				  <div class="oneSide">
+				    <div id="img_" ng-controller="image" style="padding:10px;">
+				    	<div class='img_box' href="#" ng-repeat="x in data" ng-click="showImgDetail(x)">
+					      <img src='{{x.profile_image}}'>
+					      <p>{{x.name}}</p>
+					      <p>{{x.text}}</p>
+					      <i class='icon ion-heart'>{{x.love}}</i>
+					      <i class='icon ion-heart-broken'>{{x.hate}}</i>
+					  	</div>
+				    </div>
+				  </div>
+
+				  <!-- 视频 -->
+				  <div class="oneSide">
+				    <div id='verdio' class="verdio" ng-controller="video">
+				    	<div class="verdio_box" ng-repeat="x in data" ng-click="showVerdioDetail(x)">
+							<img src="{{x.profile_image}}">
+							<p>{{x.name}}</p>
+							<p>{{x.text}}</p>
+							<i class='icon ion-heart'>{{x.love}}</i>
+					      	<i class='icon ion-heart-broken'>{{x.hate}}</i>
+				    	</div>
+				    </div>
+				  </div>
+
+				</div>
+			</ion-content>
+ 		</ion-side-menu-content>
+	</ion-side-menus>
+
+	<!-- audio -->
+	<audio id="ado" autoplay="autoplay" ng-show='music_chonnel'>
+		<source src="">
+	</audio>
+	
+	<!-- fooster -->
+	<ion-footer-bar align-title="left" class="bar-assertive" ng-if='music_chonnel'>
+		<div id="broadcast" ng-click="operate($event)">
+			<div id="banner"><img src="{{cur_image}}"></div>
+			<!-- <div id="progress"><div class="pro_ing"></div><div class="pro_bar"></div></div> -->
+			<div id="progress"><input type="range"></div>
+			<span id="song_name">{{cur_name}}</span>
+			<div id="operation">
+				<div id="back" class="icon ion-ios-rewind"></div>
+				<div id="pause" class="icon ion-ios-{{pause?'pause':'play'}}"></div>
+				<div id="forward" class="icon ion-ios-fastforward"></div>
+			</div>
+			<div class="icon ion-volume-medium" id="volumn" >
+				<input type="range">
+			</div>
+		</div>
+	</ion-footer-bar>
+
+	<!-- 搜索 -->
+	<div class="search" ng-if='search'>
+		<div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon"></i>
+		    <input type="search" placeholder="Search">
+		  </label>
+		  <button class="button button-clear" ng-click='mysearch()' >
+		    Cancel
+		  </button>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	//滑动
+window.ready = function(fn){
+    if(document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', function() {
+            //注销事件, 避免反复触发
+            document.removeEventListener('DOMContentLoaded',arguments.callee, false);
+            fn();            //执行函数
+        }, false);
+    }else if(document.attachEvent) {        //IE
+        document.attachEvent('onreadystatechange', function() {
+            if(document.readyState == 'complete') {
+                document.detachEvent('onreadystatechange', arguments.callee);
+                fn();        //函数执行
+            }
+        });
+    }
+};
+
+window.ready(function () {
+
+    var touches = {
+        startX: 0,
+        startY: 0,
+        endX: 0,
+        endY: 0,
+        moveLength: 0,//从 startX 到 endX 的长度
+        lastMoveLength: 0, // 上一次的移动长度
+        baseLength: document.documentElement.clientWidth
+    };
+
+    var dkBody = document.getElementById('sideBox');
+    var baseSlide = dkBody.getElementsByClassName('oneSide');
+    dkBody.style.width = touches.baseLength * baseSlide.length + 'px';
+    dkBody.style.height = document.documentElement.clientHeight + 'px';
+    for (var i = 0; i < baseSlide.length; i++) {
+        baseSlide[i].style.width = touches.baseLength + 'px';
+        baseSlide[i].style.left = i * touches.baseLength + 'px';
+    }
+
+    dkBody.addEventListener('touchstart', onTouchStart, false);
+
+    function onTouchStart(e) {
+        console.log(e);
+        if (e.touches.length == 1) {
+            touches.startX = e.touches[0].pageX;
+            touches.startY = e.touches[0].pageY;
+            dkBody.addEventListener('touchmove', onTouchMove, false);
+        }
+    }
+
+    function onTouchMove(e) {
+        touches.endX = e.touches[0].pageX;
+        touches.endY = e.touches[0].pageY;
+        dkBody.addEventListener('touchend', onTouchEnd, false);
+        touches.moveLength = touches.startX - touches.endX;
+        dkBody.style.transform = "translate3d(" + (touches.moveLength * -0.7 + touches.lastMoveLength) + "px,0,0)";
+    }
+
+    function onTouchEnd(e) {
+        dkBody.removeEventListener('touchmove', ontouchmove);
+        dkBody.removeEventListener('touchend', onTouchEnd);
+        if (Math.abs(touches.moveLength) > touches.baseLength / 2) {
+            //向右边滑动
+            if (touches.moveLength < 0) {
+                if (touches.lastMoveLength == 0) {
+                    dkBody.style.transform = "translate3d(0,0,0)";
+                } else {
+                    touches.lastMoveLength += touches.baseLength;
+                    dkBody.style.transform = "translate3d(" + touches.lastMoveLength + "px,0,0)";
+                }
+            } else {//向左边滑动
+                if (Math.abs(touches.lastMoveLength) == (baseSlide.length - 1) * touches.baseLength) {
+                    dkBody.style.transform = "translate3d(" + touches.lastMoveLength + "px,0,0)";
+                } else {
+                    touches.lastMoveLength += touches.baseLength * -1;
+                    dkBody.style.transform = "translate3d(" + touches.lastMoveLength + "px,0,0)";
+                }
+            }
+        } else {
+            dkBody.style.transform = "translate3d(" + touches.lastMoveLength + "px,0,0)";
+        }
+        //console.log(touches);
+    }
+})
+ 
+
+
+</script>
+</html>

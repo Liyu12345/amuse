@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+</head>
+	<link rel="stylesheet" type="text/css" href="plugin/ionic/css/ionic.min.css">
+	<link rel="stylesheet" type="text/css" href="src/css/comment.css">
+
+	<script type="text/javascript" src="plugin/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="plugin/ionic/js/ionic.bundle.min.js"></script>
+	<script type="text/javascript" src="src/js/comment.js"></script>
+<body ng-app="app" ng-controller="CON">
+	<dd info='stu1'></dd>
+	<span my-draggable>Drag ME</span>
+	<say green='green()'></say>
+</body>
+<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("CON",function($scope){
+		$scope.stu1 = [{
+			name:'jack',
+			age:'11'
+		},
+		{
+			name:'dick',
+			age:'17'
+		}];
+		$scope.green = function(){
+			return $scope.stu1;
+		}
+	})
+	app.directive('dd',function(){
+		return {
+			restrict:'ACE',
+			scope:{
+				scopename:'=info'
+			},
+			template:"<div ng-repeat='x in scopename'><p>name:{{x.name}}</p><p>age:{{x.age}}</p></div>"
+		}
+	})
+	
+	app.directive('myDraggable', ['$document', function ($document) {
+         return {
+             link: function (scope, element, attr) {
+                 var startX = 0, startY = 0, x = 0, y = 0; 
+                element.css({
+                     position: 'relative',
+                     border: '1px solid red',
+                     backgroundColor: 'lightgrey',
+                    cursor: 'pointer'
+                });
+
+                element.on('mousedown', function (event) {
+                    // Prevent default dragging of selected content
+                    event.preventDefault();
+                    startX = event.pageX - x;
+                     startY = event.pageY - y;
+                     element.on('mousemove', mousemove);
+                    $document.on('mouseup', mouseup);
+                });
+
+                function mousemove(event) {
+                	console.log(11)
+                    y = event.pageY - startY;
+                    x = event.pageX - startX;
+                    element.css({
+                         top: y + 'px',
+                         left: x + 'px'
+                     });
+                 }
+
+                 function mouseup() {
+                     $document.off('mousemove', mousemove);
+                     $document.off('mouseup', mouseup);
+                 }
+             }
+         };
+     }]);
+
+</script>
+</html>

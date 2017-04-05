@@ -1,0 +1,36 @@
+	.scroll-content{
+		top:45px;
+	}
+	.img{
+		width: 100%;
+		overflow: auto;
+	}
+	.img img{
+		width:100%;
+	}
+	.img p{
+		text-align: center;
+		line-height: 30px;
+	}
+	.verdio{
+		width: 100%;
+		overflow: hidden;
+		margin-top: 10%;
+	}
+	.verdio h3{
+		text-align: center;
+	}
+	.verdio p{
+		font-size: 12px;
+		line-height: 20px;
+		color:#666;
+	}
+	#myVideo{
+		width: 100%;
+	}
+	.detail_box h3{
+		text-align: center;
+	}
+	.detail_box img{
+		margin-bottom:5px; 
+	}

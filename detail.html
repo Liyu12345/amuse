@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+</head>
+
+<link rel="stylesheet" type="text/css" href="plugin/ionic/css/ionic.min.css">
+<link rel="stylesheet" type="text/css" href="src/css/comment.css">
+<link rel="stylesheet" type="text/css" href="src/css/detail.css">
+<script type="text/javascript" src='plugin/jquery-2.1.1.min.js'></script>
+<script type="text/javascript" src="plugin/ionic/js/ionic.bundle.min.js"></script>
+<script type="text/javascript" src="plugin/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="src/js/comment.js"></script>
+
+<body data-ng-app='detailApp' ng-controller="detailCon">
+	  	<div class="bar bar-header">
+		  <button class="button button-icon icon ion-ios-arrow-left" ng-click="back()"></button>
+		  <div class="h6 title" style="font-weight: bold">天天娱乐</div>
+		  <button class="button button-clear button-positive icon ion-ios-home" onclick="javascript:window.location.href='index.html'"></button>
+		</div>
+	<ion-content>
+		<detail></detail>
+	</ion-content>
+
+	<!-- 页脚 -->
+	<div class="tabs tabs-icon-top" ng-if='!music_chonnel'>
+	  <a class="tab-item" href="index.html">
+	    <i class="icon ion-home"></i>
+	    主页
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-star"></i>
+	    收藏
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-gear-a"></i>
+	    设置
+	  </a>
+	</div>
+</body>
+<script type="text/javascript" src="src/js/detail.js"></script>
+</html>
